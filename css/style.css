@@ -1,0 +1,52 @@
+body{
+    background: url("https://wallpapertag.com/wallpaper/full/0/c/d/572662-pokemon-forest-background-1920x1200-photos.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+h3{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.userInput{
+    margin: 1%;
+}
+
+.userButton{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.container{
+    background: rgb(228,90,55);
+    background: radial-gradient(circle, rgba(228,90,55,1) 33%, rgba(216,82,48,1) 56%, rgba(172,70,31,1) 91%);
+    border-radius: 40px;
+    padding-top: 1%;
+    padding-bottom: 10%;
+    -webkit-box-shadow: 1px 0.5px 8px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 1px 0.5px 8px 0px rgba(0,0,0,0.35);
+    box-shadow: 1px 0.5px 8px 0px rgba(0,0,0,0.35)
+}
+
+input[type = "text"], textarea, .groups, .card{
+    background-color: lightgrey;
+}
+
+#userContainer{
+    margin: auto;
+}
+
+.card{
+    margin: 1% auto;
+    border: black 1px solid;
+    text-align: left;
+    width: 20%;
+}
