@@ -5,6 +5,7 @@ var create = document.getElementById("create");
 var users = document.getElementById("users");
 var players = document.getElementsByClassName("userInput");
 var userContainer = document.getElementById("userContainer");
+var cardContainer = document.getElementsByClassName("cardContainer");
 var userButton = document.getElementsByClassName("userButton");
 var reset = document.getElementById("reset");
 var randomButton = document.getElementById("randomize");
@@ -15,9 +16,10 @@ var playerCount = document.getElementById("playerCount");
 var calc = document.getElementsByClassName("calc");
 var randTitle = document.getElementById("randTitle");
 
+
 var userArray = [];
-var inputContainer = document.createElement("div");
-inputContainer.classList.add("contain", "mx-auto");
+
+
 
 // ================================================================================================
 // LISTENER FUNCTIONS
@@ -39,16 +41,18 @@ function createBoxes(){
         maxInput.type = "text";
         maxInput.classList.add("teamMax");
 
+        inputContainer = document.createElement("div");
+        inputContainer.classList.add("contain", "mx-auto");
         users.appendChild(inputContainer);
         inputContainer.appendChild(newTitle);
         userArray = [];
 
-        for (var x = 0; x < playerCount.value; x++) {
-            userArray[x] = document.createElement("input");
-            userArray[x].type = "text";
-            userArray[x].classList.add("userInput");
-            inputContainer.appendChild(userArray[x]);
-        }
+                for (var x = 0; x < playerCount.value; x++) {
+                    userArray[x] = document.createElement("input");
+                    userArray[x].type = "text";
+                    userArray[x].classList.add("userInput");
+                    inputContainer.appendChild(userArray[x]);
+                }
         inputContainer.appendChild(maxTitle);
         inputContainer.appendChild(maxInput);
         create.disabled = true;
@@ -70,7 +74,7 @@ function createUsers(){
 
 function randomize(){
     //Clearing the old groups
-    clearRando();
+    clearRandomizedPokemon();
 
     var lines = textAreaId.value.split('\n');
     var pokeArray = [];
@@ -88,7 +92,7 @@ function randomize(){
     if (pokeArray.length < (groups.length*teamMax[0].value)){
         alert("There needs to be at least " + teamMax[0].value * players.length +
             " Pokemon in the list for even distribution");
-        clearRando();
+        clearRandomizedPokemon();
     }
     else {
         bgChange();
@@ -145,8 +149,15 @@ function chunkArray(myArray, chunk_size){
 }
 
 function createUsersButton(){
-    userContainer.classList.add("row");
-    userContainer.classList.add("mx-auto");
+    var cardContainer = document.createElement("div");
+    cardContainer.classList.add("cardContainer");
+
+    cardContainer.classList.add("row");
+    cardContainer.classList.add("mx-auto");
+
+
+    userContainer.appendChild(cardContainer);
+
     for (var i = 0; i < playerCount.value; i++) {
         var card = document.createElement("div");
         var playerName = document.createElement("h6");
@@ -159,24 +170,37 @@ function createUsersButton(){
         card.classList.add("col-sm-4");
         playerName.innerHTML = userArray[i].value;
 
-        userContainer.appendChild(card);
+        cardContainer.appendChild(card);
         card.appendChild(playerName);
         card.appendChild(pokeList);
     }
+
 }
 
-function clearUserBoxes(){
-    create.disabled = false;
+function resetAll(){
 
-    var newTitle = document.getElementsByClassName("newTitle");
-    var div = newTitle[0].parentElement;
-    div.parentNode.removeChild(div);
-    userArray = [];
-    clearRando();
+    //Removes the generated user input fields
+    create.disabled = false;
+    for (var x = 0; x < userArray.length; x++) {
+        inputContainer.removeChild(userArray[x]);
+    }
+    users.removeChild(inputContainer);
+
+    //Removes the generated user cards
+    clearRandomizedPokemon();
+    var cards = document.getElementsByClassName("card");
+    for (var i = 0; i < cards.length;i++){
+        cardContainer[0].removeChild(cards[i]);
+    }
+    userContainer.removeChild(cardContainer[0]);
+
+    //Clears the text fields
+    playerCount.value = "";
+    textAreaId.value = "";
 }
 
 //Clears the list of randomized pokemon
-function clearRando(){
+function clearRandomizedPokemon(){
     for (var i = 0; i < groups.length; i++){
         var ul = document.getElementsByClassName("groups")[i];
         if (ul) {
@@ -219,4 +243,4 @@ function bgChange(){
 create.addEventListener("click", createBoxes);
 userButton[0].addEventListener("click", createUsers);
 randomButton.addEventListener("click", randomize);
-reset.addEventListener("click", clearUserBoxes);
+reset.addEventListener("click", resetAll);
