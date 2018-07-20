@@ -174,13 +174,14 @@ function createUsersButton(){
         card.appendChild(playerName);
         card.appendChild(pokeList);
     }
-
+    userButton[0].disabled = true;
 }
 
 function resetAll(){
 
     //Removes the generated user input fields
     create.disabled = false;
+    userButton[0].disabled = false;
     for (var x = 0; x < userArray.length; x++) {
         inputContainer.removeChild(userArray[x]);
     }
