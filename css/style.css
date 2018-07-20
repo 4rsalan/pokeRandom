@@ -1,19 +1,19 @@
-/* @font-face {
+@font-face {
     font-family: 'Conv_poke';
     src: url('../fonts/poke.eot');
     src: local('☺'), url('../fonts/poke.woff') format('woff'), url('../fonts/poke.ttf') format('truetype'), url('../fonts/poke.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
-*/
 
-body{
+body {
     background: url("../img/b1.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100%;
+    font-family: "Trebuchet MS";
 }
 
 html{
@@ -47,6 +47,10 @@ h3{
 
 input[type = "text"], textarea, .groups{
     background-color: lightgrey;
+    /*
+    font-family: Conv_poke;
+     */
+    font-family: 'VT323', monospace;
 }
 
 #userContainer{
@@ -60,7 +64,10 @@ input[type = "text"], textarea, .groups{
     text-align: left;
     width: 18%;
     background-color: #97c17c;
-}
+    /*
+    font-family: Conv_poke;
+     */
+    font-family: 'VT323', monospace;}
 
 .contain{
     z-index: auto;
@@ -71,4 +78,7 @@ input[type = "text"], textarea, .groups{
     border-radius: 20px;
     border: grey solid 15px;
     background-color: #97c17c;
-}
+    /*
+    font-family: Conv_poke;
+     */
+    font-family: 'VT323', monospace;}
